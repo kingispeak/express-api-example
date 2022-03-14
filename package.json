@@ -1,0 +1,37 @@
+{
+  "name": "express-api",
+  "description": "",
+  "keywords": [
+    "express",
+    "mongoose",
+    "mongodb"
+  ],
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "test": "eslint src/**/*.js & jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.js --fix",
+    "build": "babel src -d dist --ignore src/**/*.test.js",
+    "start": "npm run build && node dist/server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7",
+    "redis": "^4.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15"
+  }
+}

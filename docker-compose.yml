@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  server:
+    build: .
+    ports:
+      # - 8080:3000
+      - "${HOST_PORT}:${APP_PORT}"
+    volumes:
+      - .:/app
+      # prevent host from overwriting node_modules
+      - "exclude:/app/node_modules"
+    command: /usr/local/wait-for-it.sh mongo:27017 -- npm start
+    env_file:
+      - .env
+    networks:
+      - webnet
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    restart: always
+    networks:
+      - webnet
+    volumes:
+      - ./data:/data/db
+
+volumes:
+  exclude:
+
+networks:
+  webnet:
